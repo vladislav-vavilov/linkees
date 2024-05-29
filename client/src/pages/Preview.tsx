@@ -31,6 +31,7 @@ export const Preview: FC = () => {
         <ProfileView size='lg' />
         <LinkItems className='overflow-y-auto md:max-h-80' />
       </Section>
+      <LinkItems className='overflow-y-auto md:max-h-80' />
     </div>
   )
 }

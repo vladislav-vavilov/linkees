@@ -3,11 +3,15 @@ import { FC } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import { useAppSelector } from '@/hooks/redux'
+import { selectUser } from '@/store/slices/userSlice'
 
 import { Logo } from '../Logo'
 import { Section } from '../Section'
 
 export const Header: FC = () => {
+  const { id } = useAppSelector(selectUser)
+
   const navLinks = [
     {
       label: 'Links',
@@ -44,7 +48,7 @@ export const Header: FC = () => {
           ))}
         </ul>
         <Button variant='outline' asChild>
-          <Link to='/preview'>
+          <Link to={`/${id}`}>
             <Eye size={20} className='sm:hidden' />
             <span className='hidden sm:inline'>Preview</span>
           </Link>

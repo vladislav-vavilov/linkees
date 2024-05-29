@@ -44,7 +44,7 @@ export const api = createApi({
     }),
     auth: builder.query<User, string | null | void>({
       query: () => '/auth/auth',
-      providesTags: ['User', 'Links']
+      providesTags: ['User']
     }),
     uploadAvatar: builder.mutation<BaseResponse, File>({
       query: (file) => {
@@ -94,6 +94,10 @@ export const api = createApi({
         method: 'POST'
       })
     }),
+    links: builder.query<Link[], string | void>({
+      query: (id) => `/links/${id ?? ''}`,
+      providesTags: ['Links']
+    }),
     createLink: builder.mutation<BaseResponse, Omit<Link, 'id'>>({
       query: (data) => ({
         url: '/links',
@@ -137,6 +141,7 @@ export const {
   useDeleteProfileMutation,
   useUpdatePasswordMutation,
   useSendVerificationEmailMutation,
+  useLinksQuery,
   useCreateLinkMutation,
   useUpdateLinkMutation,
   useReorderLinksMutation,

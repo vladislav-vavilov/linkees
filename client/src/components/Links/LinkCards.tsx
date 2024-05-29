@@ -2,25 +2,28 @@ import { FC } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { toast } from 'sonner'
 
-import { DragDrop } from '@/components/DragDrop'
-import { LinkCard } from '@/components/LinkCard'
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useReorderLinksMutation } from '@/services/api'
-import { reorder, selectLinks } from '@/store/slices/linksSlice'
+import { useLinksQuery, useReorderLinksMutation } from '@/services/api'
 
-export const DragDropLinks: FC = () => {
-  const links = useAppSelector(selectLinks)
-  const dispatch = useAppDispatch()
+import { DragDrop } from '../DragDrop'
+import { Spinner } from '../Spinner'
+import { LinkCard } from './LinkCard'
+import { LinksFetchingError } from './LinksFetchingError'
 
+export const LinkCards: FC = () => {
+  const { data, isLoading, isError, refetch, isFetching } = useLinksQuery()
   const [reorderLinks] = useReorderLinksMutation()
+
+  if (isLoading) return <Spinner.Centered />
+  if (isError)
+    return <LinksFetchingError isFetching={isFetching} refetch={refetch} />
 
   const handleDragEnd = async (result: DropResult) => {
     const source = result.source.index
     const destination = result.destination?.index
 
     if (destination !== undefined && source !== destination) {
-      dispatch(reorder({ from: source, to: destination }))
+      // dispatch(reorder({ from: source, to: destination }))
       const { error } = await reorderLinks({
         id: result.draggableId,
         destination
@@ -32,7 +35,7 @@ export const DragDropLinks: FC = () => {
   return (
     <DragDrop onDragEnd={handleDragEnd}>
       <DragDrop.Droppable id='droppable'>
-        {links.map(({ platform, URI, id }, index) => (
+        {data?.map(({ platform, URI, id }, index) => (
           <DragDrop.Draggable key={id} id={id} index={index}>
             <LinkCard platform={platform} URI={URI} id={id} />
           </DragDrop.Draggable>

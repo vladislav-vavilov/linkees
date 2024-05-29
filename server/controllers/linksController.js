@@ -19,8 +19,13 @@ const generateOrderKey = (items, destination) => {
 class linksController {
 	async getLinks(req, res) {
 		try {
-			const { uid } = req.params
-			const links = await Link.find({ user: uid })
+			if (!req.params.user) {
+				return res
+					.status(400)
+					.json({ message: 'There is no user with such ID.' })
+			}
+
+			const links = await Link.find({ user: req.params.user })
 			return res.status(200).json(links)
 		} catch (error) {
 			console.log(error)
@@ -45,6 +50,7 @@ class linksController {
 
 			const link = new Link({
 				...req.body,
+				user: req.user.id,
 				orderKey: generateKeyBetween(null, lastLink?.orderKey ?? null),
 			})
 			await link.save()

@@ -1,16 +1,28 @@
 import { FC } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { platforms } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
 import { cn } from '@/lib/utils'
-import { selectLinks } from '@/store/slices/linksSlice'
+import { useLinksQuery } from '@/services/api'
+import { selectUser } from '@/store/slices/userSlice'
 
+import { LinksFetchingError } from '../Links/LinksFetchingError'
 import { LinkItem } from './LinkItem'
+import { LinkItemsSkeleton } from './LinkItemsSkeleton'
 
 export const LinkItems: FC<{ className?: string }> = ({ className }) => {
-  const links = useAppSelector(selectLinks)
+  const { userId } = useParams()
+  const { id: currentUserId } = useAppSelector(selectUser)
+  const { data, isLoading, isError, refetch, isFetching } = useLinksQuery(
+    userId ?? currentUserId
+  )
 
-  const items = links.map(({ platform, URI, id }) => ({
+  if (isLoading) return <LinkItemsSkeleton />
+  if (isError)
+    return <LinksFetchingError isFetching={isFetching} refetch={refetch} />
+
+  const items = data?.map(({ platform, URI, id }) => ({
     id,
     URI,
     label: platforms[platform].label,

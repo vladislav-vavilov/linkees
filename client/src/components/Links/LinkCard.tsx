@@ -10,8 +10,9 @@ import { useAppDispatch } from '@/hooks/redux'
 import { useDebounce } from '@/hooks/useDebounce'
 import { getApiErrorMessage } from '@/lib/utils'
 import { useDeleteLinkMutation, useUpdateLinkMutation } from '@/services/api'
-import { remove, update } from '@/store/slices/linksSlice'
+import { update } from '@/store/slices/linksSlice'
 import { type Link as LinkCardProps } from '@/types'
+import { UpdateLinkRequest } from '@/types/api'
 
 import { PlatformSelect } from '../PlatformSelect'
 
@@ -28,7 +29,7 @@ export const LinkCard: FC<LinkCardProps> = memo(({ platform, URI, id }) => {
     error && toast.error(getApiErrorMessage(error))
   }, 1500)
 
-  const handleUpdate = (payload) => {
+  const handleUpdate = (payload: UpdateLinkRequest) => {
     dispatch(update(payload))
     debouncedUpdate(payload)
   }
