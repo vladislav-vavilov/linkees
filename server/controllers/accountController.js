@@ -10,6 +10,38 @@ import jwt from 'jsonwebtoken'
 import { secretKey } from '../config.js'
 
 class accountController {
+	async getProfile(req, res) {
+		try {
+			if (!req.params.userId) {
+				return res
+					.status(400)
+					.json({ message: 'There is no user with such ID.' })
+			}
+
+			const user = await User.findById(req.params.userId)
+			res.json({
+				username: user.username,
+				email: user.email,
+				avatar: user.avatar,
+				description: user.description,
+				verified: user.verified,
+				role: user.role,
+				color: user.color,
+				links: user.links,
+				id: user._id,
+			})
+		} catch (error) {
+			console.log(error)
+			if (error.name === 'ValidationError') {
+				return res.status(400).json({ message: error.message })
+			}
+
+			res
+				.status(500)
+				.json({ message: 'An error occurred during avatar uploading.' })
+		}
+	}
+
 	async uploadAvatar(req, res) {
 		try {
 			const user = await User.findById(req.user.id)

@@ -46,6 +46,12 @@ export const api = createApi({
       query: () => '/auth/auth',
       providesTags: ['User']
     }),
+    user: builder.query({
+      query: (id) => ({
+        url: `/account/${id}`
+      }),
+      providesTags: ['User']
+    }),
     uploadAvatar: builder.mutation<BaseResponse, File>({
       query: (file) => {
         const formData = new FormData()

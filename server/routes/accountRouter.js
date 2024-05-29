@@ -5,6 +5,7 @@ import validations from '../validations.js'
 
 const router = new Router()
 
+router.get('/:userId', controller.getProfile)
 router.post('/avatar', auth, controller.uploadAvatar)
 router.delete('/avatar', auth, controller.deleteAvatar)
 router.patch(

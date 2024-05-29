@@ -11,7 +11,7 @@ const setCurrentUserId = (req, _, next) => {
 }
 
 router.get('', [auth, setCurrentUserId], controller.getLinks)
-router.get('/:user', controller.getLinks)
+router.get('/:userId', controller.getLinks)
 router.post(
 	'',
 	[auth, check('URI', 'Incorrect URI').isURL()],
