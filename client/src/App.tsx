@@ -5,9 +5,9 @@ import { MainLayout } from '@/components/Layouts/MainLayout'
 import { PrivateRoute } from '@/components/ProtectedRoute'
 import { Links } from '@/pages/Links'
 import { Login } from '@/pages/Login'
-import { Preview } from '@/pages/Preview'
 import { Profile } from '@/pages/Profile'
 import { Register } from '@/pages/Register'
+import { User } from '@/pages/User'
 
 export function App() {
   return (
@@ -19,7 +19,7 @@ export function App() {
           <Route path='/profile' element={<Profile />} />
         </Route>
       </Route>
-      <Route path=':userId' element={<Preview />} />
+      <Route path=':userId' element={<User />} />
       <Route element={<AuthLayout />}>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

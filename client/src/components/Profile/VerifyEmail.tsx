@@ -22,8 +22,8 @@ export const VerifyEmail: FC = () => {
   return (
     <Button
       onClick={handleClick}
-      size='sm'
       variant='outline'
+      size='sm'
       disabled={isLoading}
     >
       Verify your email
