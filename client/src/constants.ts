@@ -52,12 +52,6 @@ export const platforms = {
     domain: 'https://vk.com',
     icon: { default: Icons.vk.default, solid: Icons.vk.solid },
     color: '#45668e'
-  },
-  web: {
-    label: 'Web',
-    domain: 'https://google.com',
-    icon: { default: Icons.web.default, solid: Icons.web.default },
-    color: '#7c0000'
   }
 }
 

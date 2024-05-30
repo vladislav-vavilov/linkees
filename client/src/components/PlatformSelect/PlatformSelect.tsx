@@ -34,7 +34,7 @@ export const PlatformSelect: FC<PlatformSelectProps> = ({
             <SelectItem key={key} value={key}>
               <div className='flex items-center gap-2 text-gray-600'>
                 <Icon.default size={22} />
-                <span className='text-base'>{platforms[key].label}</span>
+                <span>{platforms[key].label}</span>
               </div>
             </SelectItem>
           )

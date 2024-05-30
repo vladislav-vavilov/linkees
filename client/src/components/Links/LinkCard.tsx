@@ -14,7 +14,7 @@ import { update } from '@/store/slices/linksSlice'
 import { type Link as LinkCardProps } from '@/types'
 import { UpdateLinkRequest } from '@/types/api'
 
-import { PlatformSelect } from '../PlatformSelect'
+import { PlatformSelect } from '../PlatformSelect/PlatformSelect'
 
 export const LinkCard: FC<LinkCardProps> = memo(({ platform, URI, id }) => {
   const dispatch = useAppDispatch()

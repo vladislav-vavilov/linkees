@@ -8,7 +8,10 @@ export type Platforms = {
   [key in Platform]: {
     label: string
     domain: string
-    icon: { default: ComponentType<Icon>; solid: ComponentType<Icon> }
+    icon: {
+      default: ComponentType<Icon>
+      solid: ComponentType<Icon>
+    }
     color: string
   }
 }

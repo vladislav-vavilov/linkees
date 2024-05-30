@@ -107,7 +107,7 @@ export const ProfileForm: FC = () => {
                 <RoleSelect onChange={field.onChange} value={field.value} />
               </FormControl>
               <FormDescription>
-                Role has no impact, it's simply a badge on the profile.
+                The role doesn't matter at all, it's just a profile icon.
               </FormDescription>
               <FormMessage />
             </FormItem>

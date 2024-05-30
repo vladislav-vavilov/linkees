@@ -19,7 +19,7 @@ import { getApiError } from '@/lib/utils'
 import { useCreateLinkMutation } from '@/services/api'
 import { type Platform } from '@/types'
 
-import { PlatformSelect } from '../PlatformSelect'
+import { PlatformSelect } from '../PlatformSelect/PlatformSelect'
 
 const formSchema = z.object({
   platform: z.enum(Object.keys(platforms) as [Platform]),
@@ -28,7 +28,7 @@ const formSchema = z.object({
 
 export const AddNewForm: FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
-    defaultValues: { platform: 'web', URI: '' }
+    defaultValues: { URI: '' }
   })
 
   const [createLink, { isLoading }] = useCreateLinkMutation()
