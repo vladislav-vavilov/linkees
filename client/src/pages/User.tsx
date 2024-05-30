@@ -2,10 +2,10 @@ import { FC } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import NotFoundImage from '@/assets/not-found.png'
+import { ShareLinkDialog } from '@/components/Dialogs/ShareLinkDialog'
 import { LinkItems } from '@/components/LinkItems'
 import { ProfileView } from '@/components/ProfileView'
 import { Section } from '@/components/Section'
-import { ShareLinkDialog } from '@/components/Dialogs/ShareLinkDialog'
 import { Spinner } from '@/components/Spinner'
 import { Button } from '@/components/ui/button'
 import { colors } from '@/constants'
@@ -35,7 +35,7 @@ export const User: FC = () => {
         </Section>
       )}
       {data && (
-        <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 overflow-y-auto bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
+        <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
           <ProfileView {...data} />
           <LinkItems
             items={data.links}

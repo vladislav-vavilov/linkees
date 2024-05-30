@@ -1,5 +1,5 @@
 import { GripVertical } from 'lucide-react'
-import { FC, memo } from 'react'
+import { FC } from 'react'
 import { toast } from 'sonner'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -9,7 +9,7 @@ import { type Link as LinkCardProps } from '@/types'
 
 import { LinkCardForm } from './LinkCardForm'
 
-export const LinkCard: FC<LinkCardProps> = memo(({ platform, URI, id }) => {
+export const LinkCard: FC<LinkCardProps> = ({ platform, URI, id }) => {
   const [deleteLink, { isLoading: isDeleteLoading }] = useDeleteLinkMutation()
 
   const handleRemove = async () => {
@@ -41,4 +41,4 @@ export const LinkCard: FC<LinkCardProps> = memo(({ platform, URI, id }) => {
       </CardContent>
     </Card>
   )
-})
+}
