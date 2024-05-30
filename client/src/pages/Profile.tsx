@@ -33,7 +33,7 @@ export const Profile: FC = () => {
         <div className='flex justify-between'>
           <div className='flex items-center gap-4'>
             <ProfileAvatar />
-            <Userinfo data={{ username, role }} />
+            <Userinfo username={username} role={role} />
             <button onClick={() => dispatch(logout())}>
               <LogOutIcon />
             </button>
