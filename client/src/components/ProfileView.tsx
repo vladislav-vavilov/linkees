@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { Role } from '@/types'
 
-import { UserAvatar } from './UserAvatar'
-import { Userinfo } from './Userinfo'
+import { UserAvatar } from './User/UserAvatar'
+import { Userinfo } from './User/Userinfo'
 
 interface ProfileViewProps {
   username: string

@@ -11,7 +11,7 @@ import { ProfileUpdatePassword } from '@/components/Profile/ProfileUpdatePasswor
 import { VerifyEmail } from '@/components/Profile/VerifyEmail'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { Userinfo } from '@/components/Userinfo'
+import { Userinfo } from '@/components/User/Userinfo'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { logout, selectCurrentUser } from '@/store/slices/userSlice'
 

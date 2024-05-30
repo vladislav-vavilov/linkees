@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
 
-import { ChangeBackgroundDialog } from '@/components/ChangeBackgroundDialog'
+import { ChangeBackgroundDialog } from '@/components/Dialogs/ChangeBackgroundDialog'
+import { ShareLinkDialog } from '@/components/Dialogs/ShareLinkDialog'
 import { Header } from '@/components/Header'
 import { MobilePreview } from '@/components/MobilePreview'
 import { Section } from '@/components/Section'
-import { ShareLinkDialog } from '@/components/ShareLinkDialog'
 
 export const MainLayout = () => {
   return (

@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/hooks/redux'
 import { selectCurrentUser } from '@/store/slices/userSlice'
 
-import { UserAvatar } from '../UserAvatar'
+import { UserAvatar } from '../User/UserAvatar'
 import { ProfileAvatarDropdownMenu } from './ProfileAvatarDropdownMenu'
 
 export const ProfileAvatar = () => {

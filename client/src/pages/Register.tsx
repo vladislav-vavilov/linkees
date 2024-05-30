@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useRegisterMutation } from '@/services/api'
+import { useAuthQuery, useRegisterMutation } from '@/services/api'
 
 const formSchema = z
   .object({
@@ -40,6 +40,8 @@ export const Register: FC = () => {
       confirmPassword: ''
     }
   })
+
+  const { data } = useAuthQuery()
   const [register, { isLoading }] = useRegisterMutation()
   const navigate = useNavigate()
 
@@ -52,6 +54,8 @@ export const Register: FC = () => {
     }
     if (error) toast.error(getApiErrorMessage(error))
   }
+
+  if (data) return <Navigate to='/' />
 
   return (
     <Form {...form}>
