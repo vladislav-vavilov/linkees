@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { API_URL } from '@/constants'
 import { cn } from '@/lib/utils'
+import { Role } from '@/types'
 
 import { Userinfo } from './Userinfo'
 
@@ -12,6 +13,7 @@ interface ProfileViewProps {
     username: string
     description?: string
     avatar: string | null
+    role: Role
   }
 }
 
@@ -29,7 +31,7 @@ export const ProfileView: FC<ProfileViewProps> = ({ size = 'base', data }) => {
         {avatar && <AvatarImage src={API_URL + '/' + avatar} alt={username} />}
         <AvatarFallback />
       </Avatar>
-      <Userinfo className='items-center' />
+      <Userinfo data={data} className='items-center' />
       {description && (
         <span
           className={cn(

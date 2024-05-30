@@ -40,7 +40,8 @@ export const User: FC = () => {
             data={{
               username: data.username,
               description: data.description,
-              avatar: data.avatar
+              avatar: data.avatar,
+              role: data.role
             }}
           />
           <LinkItems

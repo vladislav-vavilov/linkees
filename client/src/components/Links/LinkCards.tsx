@@ -2,10 +2,9 @@ import { FC, useState } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { toast } from 'sonner'
 
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import { useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
 import { useReorderLinksMutation } from '@/services/api'
-import { reorder } from '@/store/slices/linksSlice'
 import { selectCurrentUser } from '@/store/slices/userSlice'
 
 import { DragDrop } from '../DragDrop'
@@ -15,14 +14,12 @@ export const LinkCards: FC = () => {
   const { links } = useAppSelector(selectCurrentUser)
   const [data, setData] = useState(links)
   const [reorderLinks] = useReorderLinksMutation()
-  const dispatch = useAppDispatch()
 
   const handleDragEnd = async (result: DropResult) => {
     const source = result.source.index
     const destination = result.destination?.index
 
     if (destination !== undefined && source !== destination) {
-      dispatch(reorder({ from: source, to: destination }))
       const { error } = await reorderLinks({
         id: result.draggableId,
         destination

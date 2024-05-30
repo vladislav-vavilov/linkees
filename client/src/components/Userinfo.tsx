@@ -1,21 +1,19 @@
 import { FC } from 'react'
-import { useParams } from 'react-router-dom'
 
 import { Badge } from '@/components/ui/badge'
 import { roles } from '@/constants'
 import { cn } from '@/lib/utils'
-import { useUserQuery } from '@/services/api'
+import { Role } from '@/types'
 
 interface UserinfoProps {
+  data: {
+    username: string
+    role: Role
+  }
   className?: string
 }
 
-export const Userinfo: FC<UserinfoProps> = ({ className }) => {
-  const { userId } = useParams()
-  const { data } = useUserQuery(userId)
-
-  if (!data) return
-
+export const Userinfo: FC<UserinfoProps> = ({ data, className }) => {
   const Icon = roles[data.role].icon
 
   return (
