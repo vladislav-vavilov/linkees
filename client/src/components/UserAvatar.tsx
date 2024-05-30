@@ -13,7 +13,7 @@ interface UserAvatarProps {
 export const UserAvatar: FC<UserAvatarProps> = ({ avatar, username }) => {
   return (
     <Avatar className='h-28 w-28 select-none border-2 border-gray-100 shadow-sm'>
-      <AvatarImage src={API_URL + '/' + avatar} />
+      <AvatarImage src={API_URL + '/' + avatar} className='object-cover' />
       <AvatarFallback
         className={cn(
           'bg-white text-3xl font-medium text-gray-600',
