@@ -6,7 +6,7 @@ import { check } from 'express-validator'
 const router = new Router()
 
 const setCurrentUserId = (req, _, next) => {
-	req.params = { user: req.user.id }
+	req.params = { userId: req.user.id }
 	next()
 }
 

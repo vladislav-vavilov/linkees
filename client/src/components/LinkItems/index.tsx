@@ -2,10 +2,8 @@ import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { platforms } from '@/constants'
-import { useAppSelector } from '@/hooks/redux'
 import { cn } from '@/lib/utils'
 import { useLinksQuery } from '@/services/api'
-import { selectUser } from '@/store/slices/userSlice'
 
 import { LinksFetchingError } from '../Links/LinksFetchingError'
 import { LinkItem } from './LinkItem'
@@ -13,10 +11,8 @@ import { LinkItemsSkeleton } from './LinkItemsSkeleton'
 
 export const LinkItems: FC<{ className?: string }> = ({ className }) => {
   const { userId } = useParams()
-  const { id: currentUserId } = useAppSelector(selectUser)
-  const { data, isLoading, isError, refetch, isFetching } = useLinksQuery(
-    userId ?? currentUserId
-  )
+  const { data, isLoading, isError, refetch, isFetching } =
+    useLinksQuery(userId)
 
   if (isLoading) return <LinkItemsSkeleton />
   if (isError)
