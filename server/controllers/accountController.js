@@ -128,6 +128,12 @@ class accountController {
 				return res.status(400).json({ message: error.message })
 			}
 
+			if (error.name === 'MongoServerError' && error.code === 11000) {
+				res
+					.status(400)
+					.json({ message: 'User with such an email already exists' })
+			}
+
 			res
 				.status(500)
 				.json({ message: 'An error occurred when updating profile.' })
