@@ -44,13 +44,13 @@ export const api = createApi({
     }),
     auth: builder.query<User, string | null | void>({
       query: () => '/auth/auth',
-      providesTags: ['User']
+      providesTags: ['User', 'Links']
     }),
     user: builder.query<User, string | void>({
       query: (id) => ({
         url: `/account/${id ?? ''}`
       }),
-      providesTags: ['User']
+      providesTags: ['User', 'Links']
     }),
     uploadAvatar: builder.mutation<BaseResponse, File>({
       query: (file) => {

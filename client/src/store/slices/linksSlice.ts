@@ -27,7 +27,7 @@ export const linksSlice = createSlice({
   }
 })
 
-export const { update, remove, reorder } = linksSlice.actions
+export const { update, reorder } = linksSlice.actions
 export default linksSlice.reducer
 
 export const selectLinks = (state: RootState) => state.links

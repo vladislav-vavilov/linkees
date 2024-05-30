@@ -1,10 +1,9 @@
 import { FC } from 'react'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { API_URL } from '@/constants'
 import { cn } from '@/lib/utils'
 import { Role } from '@/types'
 
+import { UserAvatar } from './UserAvatar'
 import { Userinfo } from './Userinfo'
 
 interface ProfileViewProps {
@@ -22,15 +21,7 @@ export const ProfileView: FC<ProfileViewProps> = ({ size = 'base', data }) => {
 
   return (
     <div className='flex flex-col items-center gap-2'>
-      <Avatar
-        className={cn({
-          'h-24 w-24': size === 'base',
-          'h-32 w-32': size === 'lg'
-        })}
-      >
-        {avatar && <AvatarImage src={API_URL + '/' + avatar} alt={username} />}
-        <AvatarFallback />
-      </Avatar>
+      <UserAvatar avatar={avatar} username={username} />
       <Userinfo data={data} className='items-center' />
       {description && (
         <span

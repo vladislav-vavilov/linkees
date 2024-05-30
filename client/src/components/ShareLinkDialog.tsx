@@ -15,6 +15,8 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import { useAppSelector } from '@/hooks/redux'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 interface ShareLinkDialogProps {
   link?: string
@@ -22,7 +24,8 @@ interface ShareLinkDialogProps {
 
 export const ShareLinkDialog: FC<ShareLinkDialogProps> = ({ link }) => {
   const { userId } = useParams()
-  const URI = link ?? window.location.origin + '/' + userId
+  const { id } = useAppSelector(selectCurrentUser)
+  const URI = link ?? window.location.origin + '/' + (userId ?? id)
 
   const copy = () => {
     navigator.clipboard.writeText(URI)
