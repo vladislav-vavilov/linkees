@@ -45,7 +45,7 @@ export const User: FC = () => {
           />
           <LinkItems
             items={data.links}
-            className='overflow-y-auto md:max-h-80'
+            className='overflow-y-auto md:max-h-56'
           />
         </Section>
       )}

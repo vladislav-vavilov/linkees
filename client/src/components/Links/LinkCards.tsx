@@ -17,10 +17,6 @@ export const LinkCards: FC = () => {
   const [reorderLinks] = useReorderLinksMutation()
   const dispatch = useAppDispatch()
 
-  // if (isLoading) return <Spinner.Centered />
-  // if (isError)
-  //   return <LinksFetchingError isFetching={isFetching} refetch={refetch} />
-
   const handleDragEnd = async (result: DropResult) => {
     const source = result.source.index
     const destination = result.destination?.index

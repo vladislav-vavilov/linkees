@@ -100,10 +100,6 @@ export const api = createApi({
         method: 'POST'
       })
     }),
-    links: builder.query<Link[], string | void>({
-      query: (id) => `/links/${id ?? ''}`,
-      providesTags: ['Links']
-    }),
     createLink: builder.mutation<BaseResponse, Omit<Link, 'id'>>({
       query: (data) => ({
         url: '/links',
@@ -148,7 +144,6 @@ export const {
   useDeleteProfileMutation,
   useUpdatePasswordMutation,
   useSendVerificationEmailMutation,
-  useLinksQuery,
   useCreateLinkMutation,
   useUpdateLinkMutation,
   useReorderLinksMutation,

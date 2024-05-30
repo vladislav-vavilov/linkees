@@ -5,13 +5,6 @@ import { check } from 'express-validator'
 
 const router = new Router()
 
-const setCurrentUserId = (req, _, next) => {
-	req.params = { userId: req.user.id }
-	next()
-}
-
-router.get('', [auth, setCurrentUserId], controller.getLinks)
-router.get('/:userId', controller.getLinks)
 router.post(
 	'',
 	[auth, check('URI', 'Incorrect URI').isURL()],

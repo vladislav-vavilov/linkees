@@ -17,28 +17,6 @@ const generateOrderKey = (items, destination) => {
 }
 
 class linksController {
-	async getLinks(req, res) {
-		try {
-			if (!req.params.userId) {
-				return res
-					.status(400)
-					.json({ message: 'There is no user with such ID.' })
-			}
-
-			const links = await Link.find({ user: req.params.userId })
-			return res.status(200).json(links)
-		} catch (error) {
-			console.log(error)
-			if (error.name === 'ValidationError') {
-				return res.status(400).json({ message: error.message })
-			}
-
-			res
-				.status(500)
-				.json({ message: 'An error occurred when getting the links.' })
-		}
-	}
-
 	async createLink(req, res) {
 		try {
 			const errors = validationResult(req)
