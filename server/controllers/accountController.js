@@ -18,7 +18,10 @@ class accountController {
 					.json({ message: 'There is no user with such ID.' })
 			}
 
-			const user = await User.findById(req.params.userId)
+			const user = await User.findById(req.params.userId).populate({
+				path: 'links',
+				options: { sort: { orderKey: 1 } },
+			})
 			res.json({
 				username: user.username,
 				email: user.email,

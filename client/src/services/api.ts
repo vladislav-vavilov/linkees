@@ -46,9 +46,9 @@ export const api = createApi({
       query: () => '/auth/auth',
       providesTags: ['User']
     }),
-    user: builder.query({
+    user: builder.query<User, string | void>({
       query: (id) => ({
-        url: `/account/${id}`
+        url: `/account/${id ?? ''}`
       }),
       providesTags: ['User']
     }),
@@ -141,6 +141,7 @@ export const {
   useRegisterMutation,
   useLoginMutation,
   useAuthQuery,
+  useUserQuery,
   useUploadAvatarMutation,
   useDeleteAvatarMutation,
   useUpdateProfileMutation,

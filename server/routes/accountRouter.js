@@ -5,6 +5,12 @@ import validations from '../validations.js'
 
 const router = new Router()
 
+const setCurrentUserId = (req, _, next) => {
+	req.params = { user: req.user.id }
+	next()
+}
+
+router.get('', [auth, setCurrentUserId], controller.getProfile)
 router.get('/:userId', controller.getProfile)
 router.post('/avatar', auth, controller.uploadAvatar)
 router.delete('/avatar', auth, controller.deleteAvatar)

@@ -1,10 +1,10 @@
 import { FC } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { API_URL } from '@/constants'
-import { useAppSelector } from '@/hooks/redux'
 import { cn } from '@/lib/utils'
-import { selectUser } from '@/store/slices/userSlice'
+import { useUserQuery } from '@/services/api'
 
 import { Userinfo } from './Userinfo'
 
@@ -13,7 +13,8 @@ interface ProfileViewProps {
 }
 
 export const ProfileView: FC<ProfileViewProps> = ({ size = 'base' }) => {
-  const { username, description, avatar } = useAppSelector(selectUser)
+  const { userId } = useParams()
+  const { data } = useUserQuery(userId)
 
   return (
     <div className='flex flex-col items-center gap-2'>
@@ -23,18 +24,23 @@ export const ProfileView: FC<ProfileViewProps> = ({ size = 'base' }) => {
           'h-32 w-32': size === 'lg'
         })}
       >
-        {avatar && <AvatarImage src={API_URL + '/' + avatar} alt={username} />}
+        {data?.avatar && (
+          <AvatarImage
+            src={API_URL + '/' + data?.avatar}
+            alt={data?.username}
+          />
+        )}
         <AvatarFallback />
       </Avatar>
       <Userinfo className='items-center' />
-      {description && (
+      {data?.description && (
         <span
           className={cn(
             { 'text-lg': size === 'lg' },
             'text-center leading-none text-gray-600'
           )}
         >
-          {description}
+          {data?.description}
         </span>
       )}
     </div>
