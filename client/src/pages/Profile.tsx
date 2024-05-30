@@ -31,7 +31,7 @@ export const Profile: FC = () => {
         }}
       >
         <div className='flex justify-between'>
-          <div className='flex flex-col sm:flex-row sm:items-center sm:gap-4'>
+          <div className='flex flex-col items-start sm:flex-row sm:items-center sm:gap-4'>
             <ProfileAvatar />
             <div className='flex gap-2'>
               <Userinfo username={username} role={role} />
