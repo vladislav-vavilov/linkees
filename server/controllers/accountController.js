@@ -22,6 +22,10 @@ class accountController {
 				path: 'links',
 				options: { sort: { orderKey: 1 } },
 			})
+
+			if (!user)
+				return res.status(401).json({ message: 'User does not exist.' })
+
 			res.json({
 				username: user.username,
 				email: user.email,

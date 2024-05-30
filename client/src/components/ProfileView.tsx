@@ -1,20 +1,22 @@
 import { FC } from 'react'
-import { useParams } from 'react-router-dom'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { API_URL } from '@/constants'
 import { cn } from '@/lib/utils'
-import { useUserQuery } from '@/services/api'
 
 import { Userinfo } from './Userinfo'
 
 interface ProfileViewProps {
   size?: 'base' | 'lg'
+  data: {
+    username: string
+    description?: string
+    avatar: string | null
+  }
 }
 
-export const ProfileView: FC<ProfileViewProps> = ({ size = 'base' }) => {
-  const { userId } = useParams()
-  const { data } = useUserQuery(userId)
+export const ProfileView: FC<ProfileViewProps> = ({ size = 'base', data }) => {
+  const { username, description, avatar } = data
 
   return (
     <div className='flex flex-col items-center gap-2'>
@@ -24,23 +26,18 @@ export const ProfileView: FC<ProfileViewProps> = ({ size = 'base' }) => {
           'h-32 w-32': size === 'lg'
         })}
       >
-        {data?.avatar && (
-          <AvatarImage
-            src={API_URL + '/' + data?.avatar}
-            alt={data?.username}
-          />
-        )}
+        {avatar && <AvatarImage src={API_URL + '/' + avatar} alt={username} />}
         <AvatarFallback />
       </Avatar>
       <Userinfo className='items-center' />
-      {data?.description && (
+      {description && (
         <span
           className={cn(
             { 'text-lg': size === 'lg' },
             'text-center leading-none text-gray-600'
           )}
         >
-          {data?.description}
+          {description}
         </span>
       )}
     </div>

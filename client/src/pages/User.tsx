@@ -1,12 +1,14 @@
 import { FC } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
+import NotFoundImage from '@/assets/not-found.png'
 import { LinkItems } from '@/components/LinkItems'
 import { ProfileView } from '@/components/ProfileView'
 import { Section } from '@/components/Section'
 import { ShareLinkDialog } from '@/components/ShareLinkDialog'
 import { Spinner } from '@/components/Spinner'
 import { Button } from '@/components/ui/button'
+import { colors } from '@/constants'
 import { useAuthQuery, useUserQuery } from '@/services/api'
 
 export const User: FC = () => {
@@ -18,9 +20,9 @@ export const User: FC = () => {
 
   return (
     <div
-      className='flex flex-col p-4'
+      className='flex h-full flex-col p-4'
       style={{
-        background: `linear-gradient(180deg, ${data?.color}, transparent 60%)`
+        background: `linear-gradient(180deg, ${data?.color ?? colors[0]}, transparent 60%)`
       }}
     >
       {userId === currentUser?.id && (
@@ -31,10 +33,32 @@ export const User: FC = () => {
           <ShareLinkDialog link='https://google.com' />
         </Section>
       )}
-      <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 overflow-y-auto bg-transparent shadow-none md:mt-32 md:bg-white md:shadow-md'>
-        <ProfileView size='lg' />
-        <LinkItems className='overflow-y-auto md:max-h-80' />
-      </Section>
+      {data && (
+        <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 overflow-y-auto bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
+          <ProfileView
+            size='lg'
+            data={{
+              username: data.username,
+              description: data.description,
+              avatar: data.avatar
+            }}
+          />
+          <LinkItems
+            items={data.links}
+            className='overflow-y-auto md:max-h-80'
+          />
+        </Section>
+      )}
+      {!data && (
+        <div className='flex h-full items-center justify-center'>
+          <Section className='max-w-80'>
+            <img src={NotFoundImage} />
+            <h1 className='text-center text-2xl font-medium'>
+              It seems like user does not exist.
+            </h1>
+          </Section>
+        </div>
+      )}
     </div>
   )
 }

@@ -8,7 +8,8 @@ import { OutlinePhone } from './OutlinePhone'
 import { ProfileView } from './ProfileView'
 
 export const MobilePreview: FC = () => {
-  const { color } = useAppSelector(selectCurrentUser)
+  const { username, description, avatar, links, color } =
+    useAppSelector(selectCurrentUser)
 
   return (
     <OutlinePhone
@@ -17,8 +18,8 @@ export const MobilePreview: FC = () => {
         background: `linear-gradient(180deg, ${color}, transparent 45%)`
       }}
     >
-      <ProfileView />
-      <LinkItems />
+      <ProfileView data={{ username, description, avatar }} />
+      <LinkItems items={links} />
     </OutlinePhone>
   )
 }
