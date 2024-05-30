@@ -30,7 +30,7 @@ interface LinkFormProps {
   defaultValues?: Partial<z.infer<typeof formSchema>>
 }
 
-export const LinkForm: FC<LinkFormProps> = ({
+export const LinksForm: FC<LinkFormProps> = ({
   onSubmit,
   autoSubmit = false,
   isLoading,

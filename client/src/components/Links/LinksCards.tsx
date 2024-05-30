@@ -8,9 +8,9 @@ import { useReorderLinksMutation } from '@/services/linksService'
 import { reorder, selectLinks } from '@/store/slices/linksSlice'
 
 import { DragDrop } from '../DragDrop'
-import { LinkCard } from './LinkCard'
+import { LinksCard } from './LinksCard'
 
-export const LinkCards: FC = () => {
+export const LinksCards: FC = () => {
   const links = useAppSelector(selectLinks)
   const dispatch = useAppDispatch()
   const [reorderLinks] = useReorderLinksMutation()
@@ -34,7 +34,7 @@ export const LinkCards: FC = () => {
       <DragDrop.Droppable id='droppable'>
         {links.map(({ platform, URI, id }, index) => (
           <DragDrop.Draggable key={id} id={id} index={index}>
-            <LinkCard platform={platform} URI={URI} id={id} />
+            <LinksCard platform={platform} URI={URI} id={id} />
           </DragDrop.Draggable>
         ))}
       </DragDrop.Droppable>

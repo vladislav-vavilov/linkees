@@ -5,11 +5,11 @@ import { toast } from 'sonner'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getApiErrorMessage } from '@/lib/utils'
 import { useDeleteLinkMutation } from '@/services/linksService'
-import { type Link as LinkCardProps } from '@/types'
+import { type Link as LinksCardProps } from '@/types'
 
-import { LinkCardForm } from './LinkCardForm'
+import { LinksCardForm } from './LinksCardForm'
 
-export const LinkCard: FC<LinkCardProps> = ({ platform, URI, id }) => {
+export const LinksCard: FC<LinksCardProps> = ({ platform, URI, id }) => {
   const [deleteLink, { isLoading: isDeleteLoading }] = useDeleteLinkMutation()
 
   const handleRemove = async () => {
@@ -37,7 +37,7 @@ export const LinkCard: FC<LinkCardProps> = ({ platform, URI, id }) => {
         </button>
       </CardHeader>
       <CardContent className='flex flex-col gap-2'>
-        <LinkCardForm platform={platform} URI={URI} id={id} />
+        <LinksCardForm platform={platform} URI={URI} id={id} />
       </CardContent>
     </Card>
   )

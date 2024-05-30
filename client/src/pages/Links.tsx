@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
 import { Heading } from '@/components/Heading'
-import { LinkCards } from '@/components/Links/LinkCards'
 import { LinksAddNew } from '@/components/Links/LinksAddNew'
+import { LinksCards } from '@/components/Links/LinksCards'
 
 export const Links: FC = () => {
   return (
@@ -15,7 +15,7 @@ export const Links: FC = () => {
         />
         <LinksAddNew />
       </div>
-      <LinkCards />
+      <LinksCards />
     </div>
   )
 }

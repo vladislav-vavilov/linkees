@@ -8,7 +8,7 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover'
 
-import { AddNewForm } from './AddNewForm'
+import { LinksAddNewForm } from './LinksAddNewForm'
 
 export const LinksAddNew: FC = () => {
   return (
@@ -21,7 +21,7 @@ export const LinksAddNew: FC = () => {
       </PopoverTrigger>
       <PopoverContent className='w-96'>
         <h4 className='text-md font-bold'>Add new link</h4>
-        <AddNewForm />
+        <LinksAddNewForm />
       </PopoverContent>
     </Popover>
   )

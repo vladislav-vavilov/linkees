@@ -8,9 +8,9 @@ import { useUpdateLinkMutation } from '@/services/linksService'
 import { Link } from '@/types'
 import { UpdateLinkRequest } from '@/types/api'
 
-import { formSchema, LinkForm } from './LinkForm'
+import { formSchema, LinksForm } from './LinksForm'
 
-export const LinkCardForm: FC<Link> = ({ platform, URI, id }) => {
+export const LinksCardForm: FC<Link> = ({ platform, URI, id }) => {
   const [updateLink, { isLoading }] = useUpdateLinkMutation()
 
   const debouncedUpdate = useDebounce(async (payload: UpdateLinkRequest) => {
@@ -24,7 +24,7 @@ export const LinkCardForm: FC<Link> = ({ platform, URI, id }) => {
   }
 
   return (
-    <LinkForm
+    <LinksForm
       onSubmit={onSubmit}
       autoSubmit={true}
       isLoading={isLoading}

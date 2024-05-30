@@ -2,19 +2,19 @@ import { FC } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { getApiError } from '@/lib/utils'
+import { getApiErrorMessage } from '@/lib/utils'
 import { useCreateLinkMutation } from '@/services/linksService'
 
-import { formSchema, LinkForm } from './LinkForm'
+import { formSchema, LinksForm } from './LinksForm'
 
-export const AddNewForm: FC = () => {
+export const LinksAddNewForm: FC = () => {
   const [createLink, { isLoading }] = useCreateLinkMutation()
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { data, error } = await createLink(values)
     data && toast.success(data.message)
-    error && toast.error(getApiError(error))
+    error && toast.error(getApiErrorMessage(error))
   }
 
-  return <LinkForm onSubmit={onSubmit} isLoading={isLoading} />
+  return <LinksForm onSubmit={onSubmit} isLoading={isLoading} />
 }
