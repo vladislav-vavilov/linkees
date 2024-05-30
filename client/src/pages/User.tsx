@@ -30,7 +30,7 @@ export const User: FC = () => {
           <Button asChild variant='outline'>
             <Link to='/links'>Back to Editor</Link>
           </Button>
-          <ShareLinkDialog link='https://google.com' />
+          <ShareLinkDialog />
         </Section>
       )}
       {data && (

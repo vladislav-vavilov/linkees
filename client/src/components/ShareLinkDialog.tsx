@@ -1,5 +1,6 @@
 import { Copy } from 'lucide-react'
 import { FC } from 'react'
+import { useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
@@ -14,16 +15,14 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { useAppSelector } from '@/hooks/redux'
-import { selectCurrentUser } from '@/store/slices/userSlice'
 
 interface ShareLinkDialogProps {
   link?: string
 }
 
 export const ShareLinkDialog: FC<ShareLinkDialogProps> = ({ link }) => {
-  const { id } = useAppSelector(selectCurrentUser)
-  const URI = link ?? window.location.origin + '/' + id
+  const { userId } = useParams()
+  const URI = link ?? window.location.origin + '/' + userId
 
   const copy = () => {
     navigator.clipboard.writeText(URI)
