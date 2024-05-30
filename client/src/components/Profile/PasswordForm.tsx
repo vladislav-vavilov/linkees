@@ -1,6 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { SerializedError } from '@reduxjs/toolkit'
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -16,9 +14,8 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { getApiError, getApiErrorMessage } from '@/lib/utils'
+import { getApiErrorMessage } from '@/lib/utils'
 import { useUpdatePasswordMutation } from '@/services/accountService'
-import { type BaseResponse } from '@/types/api'
 
 export const formSchema = z
   .object({
@@ -44,8 +41,6 @@ const defaultValues = {
   confirmNewPassword: ''
 }
 
-type UpdatePasswordError = { name?: keyof typeof defaultValues } & BaseResponse
-
 interface PasswordFormProps {
   handleClose: () => void
 }
@@ -57,14 +52,6 @@ export const PasswordForm: FC<PasswordFormProps> = ({ handleClose }) => {
   })
   const [updatePassword, { isLoading }] = useUpdatePasswordMutation()
 
-  const handleError = (error: FetchBaseQueryError | SerializedError) => {
-    const apiError = getApiError<UpdatePasswordError>(error)
-
-    if (apiError?.name)
-      form.setError(apiError.name, { message: apiError.message })
-    else toast.error(getApiErrorMessage(error))
-  }
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { data, error } = await updatePassword({
       currentPassword: values.currentPassword,
@@ -75,7 +62,7 @@ export const PasswordForm: FC<PasswordFormProps> = ({ handleClose }) => {
       toast.success(data.message)
       handleClose()
     }
-    if (error) handleError(error)
+    if (error) toast.error(getApiErrorMessage(error))
   }
 
   return (
