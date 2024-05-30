@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { getApiError, getApiErrorMessage } from '@/lib/utils'
-import { useUpdatePasswordMutation } from '@/services/api'
+import { useUpdatePasswordMutation } from '@/services/accountService'
 import { type BaseResponse } from '@/types/api'
 
 export const formSchema = z

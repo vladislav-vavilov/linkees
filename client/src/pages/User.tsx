@@ -9,7 +9,8 @@ import { ShareLinkDialog } from '@/components/ShareLinkDialog'
 import { Spinner } from '@/components/Spinner'
 import { Button } from '@/components/ui/button'
 import { colors } from '@/constants'
-import { useAuthQuery, useUserQuery } from '@/services/api'
+import { useUserQuery } from '@/services/accountService'
+import { useAuthQuery } from '@/services/api'
 
 export const User: FC = () => {
   const { userId } = useParams()

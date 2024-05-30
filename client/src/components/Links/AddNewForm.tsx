@@ -16,7 +16,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { platforms } from '@/constants'
 import { getApiError } from '@/lib/utils'
-import { useCreateLinkMutation } from '@/services/api'
+import { useCreateLinkMutation } from '@/services/linksService'
 import { type Platform } from '@/types'
 
 import { PlatformSelect } from '../PlatformSelect/PlatformSelect'

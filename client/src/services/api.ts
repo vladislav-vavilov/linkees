@@ -2,16 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '@/constants'
 import { RootState } from '@/store'
-import { Link, type User } from '@/types'
+import { type User } from '@/types'
 import {
   BaseResponse,
   LoginRequest,
   LoginResponse,
-  RegisterRequest,
-  ReorderLinksRequest,
-  UpdateLinkRequest,
-  UpdatePasswordRequest,
-  UpdateProfileRequest
+  RegisterRequest
 } from '@/types/api'
 
 export const api = createApi({
@@ -45,107 +41,8 @@ export const api = createApi({
     auth: builder.query<User, string | null | void>({
       query: () => '/auth/auth',
       providesTags: ['User', 'Links']
-    }),
-    user: builder.query<User, string | void>({
-      query: (id) => ({
-        url: `/account/${id ?? ''}`
-      }),
-      providesTags: ['User', 'Links']
-    }),
-    uploadAvatar: builder.mutation<BaseResponse, File>({
-      query: (file) => {
-        const formData = new FormData()
-        formData.append('avatar', file)
-
-        return {
-          url: '/account/avatar',
-          method: 'POST',
-          body: formData
-        }
-      },
-      invalidatesTags: ['User']
-    }),
-    deleteAvatar: builder.mutation<BaseResponse, void>({
-      query: () => ({
-        url: '/account/avatar',
-        method: 'DELETE'
-      }),
-      invalidatesTags: ['User']
-    }),
-    updateProfile: builder.mutation<BaseResponse, UpdateProfileRequest>({
-      query: (data) => ({
-        url: '/account',
-        method: 'PATCH',
-        body: data
-      }),
-      invalidatesTags: ['User']
-    }),
-    deleteProfile: builder.mutation<BaseResponse, void>({
-      query: () => ({
-        url: '/account',
-        method: 'DELETE'
-      }),
-      invalidatesTags: ['User']
-    }),
-    updatePassword: builder.mutation<BaseResponse, UpdatePasswordRequest>({
-      query: (data) => ({
-        url: '/account/password',
-        method: 'PUT',
-        body: data
-      })
-    }),
-    sendVerificationEmail: builder.mutation<BaseResponse, void>({
-      query: () => ({
-        url: '/account/verify',
-        method: 'POST'
-      })
-    }),
-    createLink: builder.mutation<BaseResponse, Omit<Link, 'id'>>({
-      query: (data) => ({
-        url: '/links',
-        method: 'POST',
-        body: data
-      }),
-      invalidatesTags: ['Links']
-    }),
-    updateLink: builder.mutation<BaseResponse, UpdateLinkRequest>({
-      query: ({ URI, platform, id }) => ({
-        url: `/links/${id}`,
-        method: 'PATCH',
-        body: { URI, platform }
-      }),
-      invalidatesTags: ['Links']
-    }),
-    reorderLinks: builder.mutation<BaseResponse, ReorderLinksRequest>({
-      query: (data) => ({
-        url: `/links/${data.id}/reorder`,
-        method: 'PUT',
-        body: data
-      })
-    }),
-    deleteLink: builder.mutation<BaseResponse, string>({
-      query: (id) => ({
-        url: `/links/${id}`,
-        method: 'DELETE'
-      }),
-      invalidatesTags: ['Links']
     })
   })
 })
 
-export const {
-  useRegisterMutation,
-  useLoginMutation,
-  useAuthQuery,
-  useUserQuery,
-  useUploadAvatarMutation,
-  useDeleteAvatarMutation,
-  useUpdateProfileMutation,
-  useDeleteProfileMutation,
-  useUpdatePasswordMutation,
-  useSendVerificationEmailMutation,
-  useCreateLinkMutation,
-  useUpdateLinkMutation,
-  useReorderLinksMutation,
-  useDeleteLinkMutation
-} = api
+export const { useRegisterMutation, useLoginMutation, useAuthQuery } = api

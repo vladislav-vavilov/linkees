@@ -4,7 +4,7 @@ import { toast } from 'sonner'
 
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useReorderLinksMutation } from '@/services/api'
+import { useReorderLinksMutation } from '@/services/linksService'
 import { reorder, selectLinks } from '@/store/slices/linksSlice'
 
 import { DragDrop } from '../DragDrop'

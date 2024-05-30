@@ -12,10 +12,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useDeleteProfileMutation } from '@/services/api'
-
-import { Button } from '../ui/button'
+import { useDeleteProfileMutation } from '@/services/accountService'
 
 export const DeleteAccountDialog: FC = () => {
   const [deleteProfile, { isLoading }] = useDeleteProfileMutation()

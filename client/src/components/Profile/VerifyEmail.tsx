@@ -4,7 +4,7 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useSendVerificationEmailMutation } from '@/services/api'
+import { useSendVerificationEmailMutation } from '@/services/accountService'
 import { selectCurrentUser } from '@/store/slices/userSlice'
 
 export const VerifyEmail: FC = () => {

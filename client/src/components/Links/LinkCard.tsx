@@ -9,7 +9,10 @@ import { platforms } from '@/constants'
 import { useAppDispatch } from '@/hooks/redux'
 import { useDebounce } from '@/hooks/useDebounce'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useDeleteLinkMutation, useUpdateLinkMutation } from '@/services/api'
+import {
+  useDeleteLinkMutation,
+  useUpdateLinkMutation
+} from '@/services/linksService'
 import { update } from '@/store/slices/linksSlice'
 import { type Link as LinkCardProps } from '@/types'
 import { UpdateLinkRequest } from '@/types/api'

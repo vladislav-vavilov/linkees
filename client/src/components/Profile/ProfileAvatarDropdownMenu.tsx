@@ -12,7 +12,7 @@ import { cn, getApiErrorMessage } from '@/lib/utils'
 import {
   useDeleteAvatarMutation,
   useUploadAvatarMutation
-} from '@/services/api'
+} from '@/services/accountService'
 
 export const ProfileAvatarDropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +43,7 @@ export const ProfileAvatarDropdownMenu = () => {
             className={cn(
               'rounded-full bg-white p-1.5 shadow-md',
               !isOpen &&
-                'cursor:opacity-0 cursor:invisible cursor:transition-all cursor:group-hover:visible cursor:group-hover:opacity-100'
+                'cursor:invisible cursor:opacity-0 cursor:transition-all cursor:group-hover:visible cursor:group-hover:opacity-100'
             )}
           >
             <Pen size={16} />

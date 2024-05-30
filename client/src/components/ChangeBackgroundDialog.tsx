@@ -16,7 +16,7 @@ import {
 import { colors } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
 import { cn, getApiErrorMessage } from '@/lib/utils'
-import { useUpdateProfileMutation } from '@/services/api'
+import { useUpdateProfileMutation } from '@/services/accountService'
 import { selectCurrentUser } from '@/store/slices/userSlice'
 
 export const ChangeBackgroundDialog: FC = () => {

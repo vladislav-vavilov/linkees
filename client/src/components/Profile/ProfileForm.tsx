@@ -18,7 +18,7 @@ import { Input } from '@/components/ui/input'
 import { roles } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
-import { useUpdateProfileMutation } from '@/services/api'
+import { useUpdateProfileMutation } from '@/services/accountService'
 import { selectCurrentUser } from '@/store/slices/userSlice'
 import { type Role } from '@/types'
 
