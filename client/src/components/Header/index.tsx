@@ -27,7 +27,7 @@ export const Header: FC = () => {
 
   return (
     <header>
-      <Section className='flex items-center justify-between p-4'>
+      <Section className='flex items-center justify-between md:p-4'>
         <Link to='/'>
           <Logo />
         </Link>

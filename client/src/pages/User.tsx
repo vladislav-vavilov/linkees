@@ -27,7 +27,7 @@ export const User: FC = () => {
       }}
     >
       {userId === currentUser?.id && (
-        <Section as='header' className='flex justify-between p-4'>
+        <Section as='header' className='flex justify-between md:p-4'>
           <Button asChild variant='outline'>
             <Link to='/links'>Back to Editor</Link>
           </Button>

@@ -31,14 +31,16 @@ export const Profile: FC = () => {
         }}
       >
         <div className='flex justify-between'>
-          <div className='flex items-center gap-4'>
+          <div className='flex flex-col sm:flex-row sm:items-center sm:gap-4'>
             <ProfileAvatar />
-            <Userinfo username={username} role={role} />
-            <button onClick={() => dispatch(logout())}>
-              <LogOutIcon />
-            </button>
+            <div className='flex gap-2'>
+              <Userinfo username={username} role={role} />
+              <button onClick={() => dispatch(logout())}>
+                <LogOutIcon />
+              </button>
+            </div>
           </div>
-          <div className='flex items-center gap-2'>
+          <div className='flex flex-col gap-2 sm:flex-row sm:items-center'>
             <VerifyEmail />
             <DrawerDialog
               isOpen={isOpen}
