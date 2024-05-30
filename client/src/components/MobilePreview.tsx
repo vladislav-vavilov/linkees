@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
 import { useAppSelector } from '@/hooks/redux'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 import { LinkItems } from './LinkItems'
 import { OutlinePhone } from './OutlinePhone'
 import { ProfileView } from './ProfileView'
 
 export const MobilePreview: FC = () => {
-  const { color } = useAppSelector(selectUser)
+  const { color } = useAppSelector(selectCurrentUser)
 
   return (
     <OutlinePhone

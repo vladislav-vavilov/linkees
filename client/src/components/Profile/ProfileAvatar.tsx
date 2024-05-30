@@ -2,12 +2,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { API_URL } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
 import { cn } from '@/lib/utils'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 import { ProfileAvatarDropdownMenu } from './ProfileAvatarDropdownMenu'
 
 export const ProfileAvatar = () => {
-  const { username, avatar } = useAppSelector(selectUser)
+  const { username, avatar } = useAppSelector(selectCurrentUser)
 
   return (
     <div className='group relative -m-4 p-4'>

@@ -19,7 +19,7 @@ import { roles } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
 import { useUpdateProfileMutation } from '@/services/api'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 import { type Role } from '@/types'
 
 import { RoleSelect } from './RoleSelect'
@@ -33,7 +33,8 @@ const formSchema = z.object({
 })
 
 export const ProfileForm: FC = () => {
-  const { username, email, description, role } = useAppSelector(selectUser)
+  const { username, email, description, role } =
+    useAppSelector(selectCurrentUser)
   const [updateProfile, { isLoading }] = useUpdateProfileMutation()
 
   const form = useForm<z.infer<typeof formSchema>>({

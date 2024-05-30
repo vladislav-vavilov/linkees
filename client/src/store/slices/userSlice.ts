@@ -16,13 +16,9 @@ const initialState: StateValue = {
 }
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: 'currentUser',
   initialState,
   reducers: {
-    setCurrentUser: (state, { payload }: PayloadAction<StateValue>) => {
-      state.data = payload.data
-      state.token = payload.token
-    },
     logout: (state) => {
       state.token = null
     }
@@ -49,7 +45,7 @@ export const userSlice = createSlice({
   }
 })
 
-export const { setCurrentUser, logout } = userSlice.actions
+export const { logout } = userSlice.actions
 export default userSlice.reducer
 
-export const selectUser = (state: RootState) => state.user.data
+export const selectCurrentUser = (state: RootState) => state.user.data

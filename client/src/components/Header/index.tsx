@@ -4,13 +4,13 @@ import { Link, NavLink } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { useAppSelector } from '@/hooks/redux'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 import { Logo } from '../Logo'
 import { Section } from '../Section'
 
 export const Header: FC = () => {
-  const { id } = useAppSelector(selectUser)
+  const { id } = useAppSelector(selectCurrentUser)
 
   const navLinks = [
     {

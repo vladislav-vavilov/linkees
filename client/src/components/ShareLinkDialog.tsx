@@ -15,14 +15,14 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { useAppSelector } from '@/hooks/redux'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 interface ShareLinkDialogProps {
   link?: string
 }
 
 export const ShareLinkDialog: FC<ShareLinkDialogProps> = ({ link }) => {
-  const { id } = useAppSelector(selectUser)
+  const { id } = useAppSelector(selectCurrentUser)
   const URI = link ?? window.location.origin + '/' + id
 
   const copy = () => {

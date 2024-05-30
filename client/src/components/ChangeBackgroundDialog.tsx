@@ -17,10 +17,10 @@ import { colors } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
 import { cn, getApiErrorMessage } from '@/lib/utils'
 import { useUpdateProfileMutation } from '@/services/api'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 export const ChangeBackgroundDialog: FC = () => {
-  const { color } = useAppSelector(selectUser)
+  const { color } = useAppSelector(selectCurrentUser)
   const [selectedValue, setSelectedValue] = useState(color)
   const [updateProfile, { isLoading }] = useUpdateProfileMutation()
 

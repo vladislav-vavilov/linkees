@@ -4,14 +4,15 @@ import { FC } from 'react'
 
 import { roles } from '@/constants'
 import { useAppSelector } from '@/hooks/redux'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 interface ProfileFieldsProps {
   handleOpen: () => void
 }
 
 export const ProfileFields: FC<ProfileFieldsProps> = ({ handleOpen }) => {
-  const { username, email, description, role } = useAppSelector(selectUser)
+  const { username, email, description, role } =
+    useAppSelector(selectCurrentUser)
 
   const fields = [
     {

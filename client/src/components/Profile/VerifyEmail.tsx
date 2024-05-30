@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button'
 import { useAppSelector } from '@/hooks/redux'
 import { getApiErrorMessage } from '@/lib/utils'
 import { useSendVerificationEmailMutation } from '@/services/api'
-import { selectUser } from '@/store/slices/userSlice'
+import { selectCurrentUser } from '@/store/slices/userSlice'
 
 export const VerifyEmail: FC = () => {
-  const { verified } = useAppSelector(selectUser)
+  const { verified } = useAppSelector(selectCurrentUser)
   const [sendEmail, { isLoading }] = useSendVerificationEmailMutation()
 
   const handleClick = async () => {

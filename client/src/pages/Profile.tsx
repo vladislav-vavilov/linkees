@@ -13,10 +13,10 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Userinfo } from '@/components/Userinfo'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
-import { logout, selectUser } from '@/store/slices/userSlice'
+import { logout, selectCurrentUser } from '@/store/slices/userSlice'
 
 export const Profile: FC = () => {
-  const { color } = useAppSelector(selectUser)
+  const { color } = useAppSelector(selectCurrentUser)
   const dispatch = useAppDispatch()
 
   const [isOpen, setIsOpen] = useState(false)
