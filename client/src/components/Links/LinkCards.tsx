@@ -31,7 +31,7 @@ export const LinkCards: FC = () => {
   return (
     <DragDrop onDragEnd={handleDragEnd}>
       <DragDrop.Droppable id='droppable'>
-        {data?.map(({ platform, URI, id }, index) => (
+        {data.map(({ platform, URI, id }, index) => (
           <DragDrop.Draggable key={id} id={id} index={index}>
             <LinkCard platform={platform} URI={URI} id={id} />
           </DragDrop.Draggable>

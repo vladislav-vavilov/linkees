@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { logout, selectCurrentUser } from '@/store/slices/userSlice'
 
 export const Profile: FC = () => {
-  const { color } = useAppSelector(selectCurrentUser)
+  const { username, role, color } = useAppSelector(selectCurrentUser)
   const dispatch = useAppDispatch()
 
   const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +33,7 @@ export const Profile: FC = () => {
         <div className='flex justify-between'>
           <div className='flex items-center gap-4'>
             <ProfileAvatar />
-            <Userinfo />
+            <Userinfo data={{ username, role }} />
             <button onClick={() => dispatch(logout())}>
               <LogOutIcon />
             </button>
