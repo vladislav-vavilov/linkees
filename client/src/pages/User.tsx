@@ -36,15 +36,7 @@ export const User: FC = () => {
       )}
       {data && (
         <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 overflow-y-auto bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
-          <ProfileView
-            size='lg'
-            data={{
-              username: data.username,
-              description: data.description,
-              avatar: data.avatar,
-              role: data.role
-            }}
-          />
+          <ProfileView {...data} />
           <LinkItems
             items={data.links}
             className='overflow-y-auto md:max-h-56'
