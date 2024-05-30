@@ -2,7 +2,7 @@ import { Braces, Laptop, PencilRuler, UserIcon } from 'lucide-react'
 
 import { Icons } from '@/components/Icons'
 
-export const API_URL = 'http://localhost:3000'
+export const API_URL = 'http://192.168.0.12:3000'
 
 export const platforms = {
   github: {

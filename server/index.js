@@ -24,7 +24,9 @@ app.use('/api/links', linksRouter)
 const start = async () => {
 	try {
 		await mongoose.connect(process.env.MONGO_DB_URI)
-		app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+		app.listen(PORT, '0.0.0.0', () =>
+			console.log(`Server started on port ${PORT}`)
+		)
 	} catch (error) {
 		console.log(error)
 	}

@@ -1,3 +1,4 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
@@ -28,6 +29,7 @@ const formSchema = z.object({
 
 export const AddNewForm: FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: { URI: '' }
   })
 
@@ -42,6 +44,7 @@ export const AddNewForm: FC = () => {
   return (
     <Form {...form}>
       <form
+        noValidate
         onSubmit={form.handleSubmit(onSubmit)}
         className='flex flex-col gap-4'
       >
@@ -65,7 +68,7 @@ export const AddNewForm: FC = () => {
             <FormItem>
               <FormLabel>URI</FormLabel>
               <FormControl>
-                <Input placeholder='Enter URI' {...field} />
+                <Input type='url' placeholder='Enter URI' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

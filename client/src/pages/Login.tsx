@@ -1,3 +1,4 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -24,6 +25,7 @@ const formSchema = z.object({
 
 export const Login: FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
       password: ''
@@ -45,6 +47,7 @@ export const Login: FC = () => {
   return (
     <Form {...form}>
       <form
+        noValidate
         onSubmit={form.handleSubmit(onSubmit)}
         className='flex w-full flex-col gap-4'
       >
@@ -55,7 +58,7 @@ export const Login: FC = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='Enter your email' {...field} />
+                <Input type='email' placeholder='Enter your email' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

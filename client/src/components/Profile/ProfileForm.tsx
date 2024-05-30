@@ -55,6 +55,7 @@ export const ProfileForm: FC = () => {
   return (
     <Form {...form}>
       <form
+        noValidate
         onSubmit={form.handleSubmit(onSubmit)}
         className='flex flex-col gap-4'
       >
@@ -78,7 +79,7 @@ export const ProfileForm: FC = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='Enter your email' {...field} />
+                <Input type='email' placeholder='Enter your email' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
