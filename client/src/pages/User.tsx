@@ -1,13 +1,12 @@
 import { FC } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import NotFoundImage from '@/assets/not-found.png'
-import { ShareLinkDialog } from '@/components/Dialogs/ShareLinkDialog'
 import { LinkItems } from '@/components/LinkItems'
 import { ProfileView } from '@/components/ProfileView'
 import { Section } from '@/components/Section'
 import { Spinner } from '@/components/Spinner'
-import { Button } from '@/components/ui/button'
+import { UserHeader } from '@/components/User/UserHeader'
 import { colors } from '@/constants'
 import { useUserQuery } from '@/services/accountService'
 import { useAuthQuery } from '@/services/api'
@@ -26,16 +25,9 @@ export const User: FC = () => {
         background: `linear-gradient(180deg, ${data?.color ?? colors[0]}, transparent 60%)`
       }}
     >
-      {userId === currentUser?.id && (
-        <Section as='header' className='flex justify-between md:p-4'>
-          <Button asChild variant='outline'>
-            <Link to='/links'>Back to Editor</Link>
-          </Button>
-          <ShareLinkDialog />
-        </Section>
-      )}
+      <UserHeader isOwner={data?.id === currentUser?.id} />
       {data && (
-        <Section className='mx-auto mt-[8vh] flex w-full max-w-80 flex-col gap-8 bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
+        <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
           <ProfileView {...data} />
           <LinkItems
             items={data.links}
