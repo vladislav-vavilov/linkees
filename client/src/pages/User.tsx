@@ -35,7 +35,7 @@ export const User: FC = () => {
         </Section>
       )}
       {data && (
-        <Section className='mx-auto flex w-full max-w-80 flex-col gap-8 bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
+        <Section className='mx-auto mt-[8vh] flex w-full max-w-80 flex-col gap-8 bg-transparent shadow-none md:mt-[20vh] md:bg-white md:shadow-md'>
           <ProfileView {...data} />
           <LinkItems
             items={data.links}

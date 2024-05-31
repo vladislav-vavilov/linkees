@@ -30,17 +30,15 @@ export const Profile: FC = () => {
           background: `linear-gradient(180deg, ${color}, rgb(249 250 251) 45%)`
         }}
       >
-        <div className='flex justify-between'>
-          <div className='flex flex-col items-start sm:flex-row sm:items-center sm:gap-4'>
+        <div className='flex flex-col justify-between sm:flex-row'>
+          <div className='flex items-center gap-4'>
             <ProfileAvatar />
-            <div className='flex gap-2'>
-              <Userinfo username={username} role={role} />
-              <button onClick={() => dispatch(logout())}>
-                <LogOutIcon />
-              </button>
-            </div>
+            <Userinfo username={username} role={role} />
+            <button onClick={() => dispatch(logout())}>
+              <LogOutIcon />
+            </button>
           </div>
-          <div className='flex flex-col gap-2 sm:flex-row sm:items-center'>
+          <div className='flex flex-col gap-2 py-4 sm:flex-row sm:items-center'>
             <VerifyEmail />
             <DrawerDialog
               isOpen={isOpen}

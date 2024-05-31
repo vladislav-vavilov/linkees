@@ -16,7 +16,7 @@ export const Section: FC<SectionProps> = ({
   return (
     <As
       className={cn(
-        'rounded-md bg-white p-4 shadow-md md:overflow-y-auto md:p-8',
+        'rounded-md bg-white p-4 shadow-md md:p-8 lg:overflow-y-auto',
         className
       )}
     >

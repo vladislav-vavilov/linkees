@@ -8,9 +8,9 @@ import { Section } from '@/components/Section'
 
 export const MainLayout = () => {
   return (
-    <div className='flex flex-col bg-gray-200 p-4 text-black md:h-dvh'>
+    <div className='flex flex-col bg-gray-200 p-4 text-black lg:h-dvh'>
       <Header />
-      <div className='flex flex-auto flex-col-reverse gap-4 pt-4 md:flex-row md:overflow-hidden'>
+      <div className='flex flex-auto flex-col-reverse gap-4 pt-4 lg:flex-row lg:overflow-hidden'>
         <Section className='flex basis-1/3 flex-col items-center justify-center gap-4'>
           <MobilePreview />
           <div className='flex flex-col gap-2'>
