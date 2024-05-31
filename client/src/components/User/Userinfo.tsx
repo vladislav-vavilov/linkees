@@ -18,7 +18,7 @@ export const Userinfo: FC<UserinfoProps> = ({ username, role, className }) => {
     <div className={cn('flex flex-col items-start', className)}>
       <div className='flex items-center gap-1'>
         <Icon />
-        <span className='max-w-[200px] truncate text-2xl font-medium'>
+        <span className='max-w-[120px] truncate text-2xl font-medium'>
           {username}
         </span>
       </div>
